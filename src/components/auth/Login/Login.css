@@ -1,0 +1,87 @@
+.login {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginWrapper {
+  width: 70%;
+  height: 70%;
+  display: flex;
+}
+
+.loginLeft,
+.loginRight {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loginLogo {
+  font-size: 50px;
+  font-weight: 800;
+  color: #1775ee;
+}
+
+.loginDesc {
+  font-size: 22px;
+}
+
+.login-title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.loginBox {
+  height: 375px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.loginInput {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+.loginInput:focus {
+  outline: none;
+}
+
+.loginBtn {
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1775ee;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+}
+
+.loginregistrationButton {
+  width: 45%;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: #42b72a;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+}
+
+.loginBtnCenter {
+  text-align: center;
+}

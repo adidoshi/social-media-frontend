@@ -1,0 +1,52 @@
+.editProfile-container {
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  height: 650px;
+  width: 500px;
+  margin: 25px auto;
+  padding: 2px 0;
+  border-radius: 5px;
+}
+
+.editProfile-box {
+  margin: 50px;
+}
+
+.editProfile-heading {
+  text-align: center;
+}
+
+.editProfile-input {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  width: 100%;
+}
+
+.editProfileFile-input {
+  margin: 10px 0;
+}
+
+.editProfile-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.editProfile-btnBox {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.editProfile-btn {
+  padding: 12px;
+  cursor: pointer;
+  background-color: #5699f0;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+}
+
+.profilePicPreview {
+  word-wrap: break-word;
+}
