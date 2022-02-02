@@ -8,6 +8,7 @@ import useAuth from "../../../context/auth/AuthContext";
 import { useHistory } from "react-router-dom";
 import { CircularProgress } from "@material-ui/core";
 import { Toaster } from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 // Formik initial input values
 const initialValues = {
@@ -46,6 +47,7 @@ const Login = () => {
 
   return (
     <>
+      <Helmet title="Login | Splash Social" />
       <Toaster />
       <div className="login">
         <div className="loginWrapper">
