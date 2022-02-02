@@ -176,7 +176,10 @@ const PostCard = ({ post }) => {
             />
           </div>
           <div className="postCommentCont-2">
-            <button className="postCommentBtn" onClick={postCommentHandler}>
+            <button
+              className="postCommentBtn"
+              onClick={postCommentHandler}
+              disabled={commentLoading ? true : false}>
               <Send style={{ fontSize: "18px" }} />
             </button>
           </div>

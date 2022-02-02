@@ -76,7 +76,7 @@ export const PostProvider = ({ children }) => {
     post: state.post,
     timelinePosts: state.timelinePosts,
     loading: state.loading,
-    createPostloading: state.createPostloading,
+    createLoading: state.createLoading,
     error: state.error,
     createPost,
     getTimelinePosts,

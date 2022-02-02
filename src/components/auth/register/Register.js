@@ -95,7 +95,7 @@ const Register = () => {
                 <ErrorMessage name="confirmPassword" component={TextError} />
                 <button
                   type="submit"
-                  className="registerBtn"
+                  className={loading ? "registerBtnDisabled" : "registerBtn"}
                   disabled={loading ? true : false}>
                   {loading ? (
                     <CircularProgress color="secondary" size="22px" />

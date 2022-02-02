@@ -15,13 +15,13 @@ import useTheme from "../../../context/ThemeContext";
 import SearchUser from "../searchUser/SearchUser";
 
 const Rightbar = ({ user, searchFriends }) => {
+  const params = useParams();
   const [friends, setFriends] = useState([]);
   const [liveUser, setLiveUser] = useState();
   const [followed, setFollowed] = useState(
     liveUser?.followings.includes(params?._id)
   );
 
-  const params = useParams();
   const history = useHistory();
 
   const { user: currentUser } = useAuth();

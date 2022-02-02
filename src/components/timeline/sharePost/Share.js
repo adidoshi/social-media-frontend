@@ -19,7 +19,7 @@ const Share = () => {
   const [liveUser, setLiveUser] = useState({});
 
   const { user } = useAuth();
-  const { createPost, getTimelinePosts } = usePost();
+  const { createPost, getTimelinePosts, createLoading } = usePost();
 
   // upload post picture to cloudinary
   const postDetails = (pics) => {
@@ -150,7 +150,10 @@ const Share = () => {
                 </label>
               </div>
             </div>
-            <button className="shareButton" type="submit">
+            <button
+              className="shareButton"
+              type="submit"
+              disabled={createLoading ? true : false}>
               Share
             </button>
           </div>

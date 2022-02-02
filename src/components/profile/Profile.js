@@ -42,7 +42,9 @@ const Profile = () => {
   }, [params.userId, currentUser.token]);
   return (
     <>
-      <Helmet title={`${user.name} Profile | Splash Social`} />
+      <Helmet
+        title={`${user?.name ? user?.name : "User"} Profile | Splash Social`}
+      />
       <Toaster />
       <Topbar />
       <div className="profile">

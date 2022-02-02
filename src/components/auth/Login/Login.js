@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -15,6 +15,12 @@ const initialValues = {
   password: "",
 };
 
+// Test User -
+const savedValues = {
+  email: "test@example.com",
+  password: "123456",
+};
+
 // validate using yup
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email format").required("Required"),
@@ -22,6 +28,7 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
+  const [formData, setFormData] = useState(null);
   const history = useHistory();
   const { user, loading, loginReq } = useAuth();
 
@@ -50,9 +57,10 @@ const Login = () => {
             </span>
           </div>
           <Formik
-            initialValues={initialValues}
+            initialValues={formData || initialValues}
             validationSchema={validationSchema}
-            onSubmit={onSubmit}>
+            onSubmit={onSubmit}
+            enableReinitialize>
             <div className="loginRight">
               <Form className="loginBox">
                 <div className="login-title">Sign In</div>
@@ -73,7 +81,7 @@ const Login = () => {
                 />
                 <ErrorMessage name="password" component={TextError} />
                 <button
-                  className="loginBtn"
+                  className={loading ? "loginBtnDisabled" : "loginBtn"}
                   type="submit"
                   disabled={loading ? true : false}>
                   {loading ? (
@@ -81,6 +89,12 @@ const Login = () => {
                   ) : (
                     "Log in"
                   )}
+                </button>
+                <button
+                  className="loginBtn"
+                  type="button"
+                  onClick={() => setFormData(savedValues)}>
+                  Get Test User credentials
                 </button>
                 <Link className="loginBtnCenter" to="/register">
                   <button className="loginregistrationButton">

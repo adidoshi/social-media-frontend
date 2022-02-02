@@ -70,6 +70,17 @@
   color: white;
 }
 
+.loginBtnDisabled {
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #7d99bd;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+}
+
 .loginregistrationButton {
   width: 45%;
   height: 30px;

@@ -70,6 +70,17 @@
   color: white;
 }
 
+.registerBtnDisabled {
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #4d6c94;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+}
+
 .registerForgot {
   text-align: center;
   color: #1775ee;

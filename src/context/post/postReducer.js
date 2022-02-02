@@ -1,6 +1,7 @@
 export const initialPostState = {
   post: {},
   loading: false,
+  createLoading: false,
   error: null,
   timelinePosts: [],
   userPosts: [],
@@ -13,16 +14,19 @@ const postReducer = (state, action) => {
     case "CREATE_POST_REQUEST":
       return {
         ...state,
+        createLoading: true,
         error: null,
       };
     case "CREATE_POST_SUCCESS":
       return {
         post: payload,
+        createLoading: false,
         error: null,
       };
     case "CREATE_POST_FAIL":
       return {
         ...state,
+        createLoading: false,
         error: payload,
       };
 
