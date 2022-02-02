@@ -12,6 +12,7 @@ const Feed = ({ userId }) => {
   const { user } = useAuth();
   const { theme } = useTheme();
 
+  // fetch timeline posts
   useEffect(() => {
     getTimelinePosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps

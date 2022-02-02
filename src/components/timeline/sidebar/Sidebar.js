@@ -18,6 +18,8 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
   const { theme } = useTheme();
   const history = useHistory();
+
+  // logout user and redirect to login page
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
     history.go("/login");

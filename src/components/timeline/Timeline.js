@@ -11,9 +11,10 @@ import Topbar from "./topbar/Topbar";
 
 const Timeline = () => {
   const [searchFriends, setSearchFriends] = useState([]);
-  const { user: currentUser } = useAuth();
   const [searchKey, setSearchKey] = useState("");
+  const { user: currentUser } = useAuth();
 
+  // search user request
   const searchHandler = async () => {
     const config = {
       headers: {

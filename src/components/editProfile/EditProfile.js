@@ -16,24 +16,27 @@ import { Helmet } from "react-helmet";
 import useTheme from "../../context/ThemeContext";
 
 const EditProfile = () => {
-  const history = useHistory();
-  const [user, setUser] = useState({});
-  const params = useParams();
+  // all states for user update fields
   const [name, setName] = useState("");
   const [from, setFrom] = useState("");
   const [city, setCity] = useState("");
   const [email, setEmail] = useState("");
   const [userDesc, setUserDesc] = useState("");
-
   const [proPicUrl, setProPicUrl] = useState("");
   const [coverPicUrl, setCoverPicUrl] = useState("");
   const [picLoading, setPicLoading] = useState(false);
 
+  const [user, setUser] = useState({});
+
+  const params = useParams();
+  const history = useHistory();
+
+  // from context
   const { user: currentUser } = useAuth();
+  const { editUser, loading, success } = useProfile();
   const { theme } = useTheme();
 
-  const { editUser, loading, success } = useProfile();
-
+  // get user details
   useEffect(() => {
     const fetchUsers = async () => {
       const config = {
@@ -50,6 +53,7 @@ const EditProfile = () => {
     fetchUsers();
   }, [params.userId, currentUser.token]);
 
+  // upload user profile picture to cloudinary
   const postProPic = (pics) => {
     setPicLoading(true);
     if (pics === undefined) {
@@ -81,6 +85,7 @@ const EditProfile = () => {
     }
   };
 
+  // upload user cover picture to cloudinary
   const postCoverPic = (pics) => {
     setPicLoading(true);
     if (pics === undefined) {
@@ -112,11 +117,13 @@ const EditProfile = () => {
     }
   };
 
+  // update user profile
   const updateProfileHandler = (e) => {
     e.preventDefault();
     editUser(name, email, userDesc, city, from, proPicUrl, coverPicUrl);
   };
 
+  // if user profile get's updated, push to home/ timeline screen
   useEffect(() => {
     if (success) {
       history.push("/");

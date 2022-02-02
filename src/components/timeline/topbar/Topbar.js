@@ -13,10 +13,12 @@ const Topbar = ({ searchHandler, setSearchKey, searchKey }) => {
   const { user: currentUser } = useAuth();
   const { theme, setTheme } = useTheme();
 
+  // Toggle theme switch
   const themeModeHandler = () => {
     setTheme(theme === themes.light ? themes.dark : themes.light);
   };
 
+  // get user details
   useEffect(() => {
     const fetchUsers = async () => {
       const config = {

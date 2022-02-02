@@ -9,6 +9,7 @@ import TextError from "../TextError";
 import { CircularProgress } from "@material-ui/core";
 import { Toaster } from "react-hot-toast";
 
+// Formik initial input values
 const initialValues = {
   name: "",
   email: "",
@@ -16,6 +17,7 @@ const initialValues = {
   confirmPassword: "",
 };
 
+// Validate using YUP
 const validationSchema = Yup.object({
   name: Yup.string().required("Required"),
   email: Yup.string().email("Invalid email format").required("Required"),
@@ -28,10 +30,13 @@ const validationSchema = Yup.object({
 const Register = () => {
   const history = useHistory();
   const { user, loading, register } = useAuth();
+
+  // register submit handler
   const onSubmit = async (values) => {
     register(values.name, values.email, values.password);
   };
 
+  // if req is successfull, i.e. if user is found in local storage push to timeline screen.
   useEffect(() => {
     if (user) {
       history.push("/");

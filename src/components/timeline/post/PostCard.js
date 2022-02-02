@@ -5,29 +5,29 @@ import sampleProPic from "../../../assets/appImages/user.png";
 import likeImg from "../../../assets/appImages/heart.png";
 import heart from "../../../assets/appImages/like.png";
 import { MoreVert, Send } from "@material-ui/icons";
+import { Box, CircularProgress } from "@material-ui/core";
 import axios from "axios";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
-import useAuth from "../../../context/auth/AuthContext";
 import { BASE_URL } from "../../../context/apiCall";
 import InputEmoji from "react-input-emoji";
 import toast from "react-hot-toast";
 import { errorOptions, successOptions } from "../../utils/toastStyle";
-import { Box, CircularProgress } from "@material-ui/core";
 import usePost from "../../../context/post/PostContext";
+import useAuth from "../../../context/auth/AuthContext";
 
 const PostCard = ({ post }) => {
   const [like, setLike] = useState(post.likes?.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
+  const [commentLoading, setCommentLoading] = useState(false);
+  const [showComment, setShowComment] = useState(false);
+  const [comm, setComm] = useState("");
+
   const { user: currentUser } = useAuth();
   const { getTimelinePosts } = usePost();
 
-  const [comm, setComm] = useState("");
-  const [commentLoading, setCommentLoading] = useState(false);
-
-  const [showComment, setShowComment] = useState(false);
-
+  // like a post (1 like per user)
   const likeHandler = () => {
     try {
       const config = {
@@ -52,6 +52,7 @@ const PostCard = ({ post }) => {
     setShowComment(!showComment);
   };
 
+  // post a comment (1 comment by each user on a post, 2nd time get's edited)
   const postCommentHandler = async () => {
     try {
       const config = {
@@ -78,15 +79,18 @@ const PostCard = ({ post }) => {
     setComm("");
   };
 
+  // get timeline posts
   useEffect(() => {
     getTimelinePosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // see weather logged in user has liked the particular post if yes user can dislike else like
   useEffect(() => {
     setIsLiked(post.likes?.includes(currentUser._id));
   }, [currentUser._id, post.likes]);
 
+  // get user details
   useEffect(() => {
     const fetchUsers = async () => {
       const config = {

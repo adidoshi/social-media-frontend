@@ -15,6 +15,7 @@ export const PostProvider = ({ children }) => {
   const [state, dispatch] = useReducer(postReducer, initialPostState);
 
   const { user: loggedUser } = useAuth();
+  // create post req
   const createPost = async (user, desc, location, pic) => {
     try {
       dispatch({
@@ -45,6 +46,7 @@ export const PostProvider = ({ children }) => {
     }
   };
 
+  // get timeline posts req
   const getTimelinePosts = async () => {
     try {
       dispatch({

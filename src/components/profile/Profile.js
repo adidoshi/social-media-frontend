@@ -9,12 +9,12 @@ import Feed from "../timeline/feed/Feed";
 import Rightbar from "../timeline/rightbar/Rightbar";
 import Sidebar from "../timeline/sidebar/Sidebar";
 import Topbar from "../timeline/topbar/Topbar";
-import useAuth from "../../context/auth/AuthContext";
 import Moment from "react-moment";
 import { Avatar } from "@material-ui/core";
 import { Edit } from "@material-ui/icons";
 import { Helmet } from "react-helmet";
 import { Toaster } from "react-hot-toast";
+import useAuth from "../../context/auth/AuthContext";
 import useTheme from "../../context/ThemeContext";
 
 const Profile = () => {
@@ -24,6 +24,7 @@ const Profile = () => {
   const { user: currentUser } = useAuth();
   const { theme } = useTheme();
 
+  // get user details
   useEffect(() => {
     const fetchUsers = async () => {
       const config = {

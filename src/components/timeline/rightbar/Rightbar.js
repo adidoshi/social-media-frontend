@@ -15,18 +15,20 @@ import useTheme from "../../../context/ThemeContext";
 import SearchUser from "../searchUser/SearchUser";
 
 const Rightbar = ({ user, searchFriends }) => {
-  const params = useParams();
-  const history = useHistory();
   const [friends, setFriends] = useState([]);
   const [liveUser, setLiveUser] = useState();
-  const { user: currentUser } = useAuth();
-  const { followUser, unfollowUser } = useProfile();
-  const { theme } = useTheme();
-
   const [followed, setFollowed] = useState(
     liveUser?.followings.includes(params?._id)
   );
 
+  const params = useParams();
+  const history = useHistory();
+
+  const { user: currentUser } = useAuth();
+  const { followUser, unfollowUser } = useProfile();
+  const { theme } = useTheme();
+
+  // get user details
   const fetchUsers = async () => {
     const config = {
       headers: {
@@ -40,15 +42,30 @@ const Rightbar = ({ user, searchFriends }) => {
     setLiveUser(res.data);
   };
 
+  // follow user handler
+  const followHandler = () => {
+    followUser(params.userId);
+    fetchUsers();
+  };
+
+  // unfollow a user
+  const unfollowHandler = () => {
+    unfollowUser(params.userId);
+    fetchUsers();
+    history.push("/");
+  };
+
   useEffect(() => {
     fetchUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // check wheather logged in user has followed a particular user, if yes button will be unfollow else user can follow
   useEffect(() => {
     setFollowed(liveUser?.followings.includes(params.userId));
   }, [params.userId, liveUser?.followings]);
 
+  // get user's followers
   useEffect(() => {
     const userFriends = async () => {
       try {
@@ -71,17 +88,7 @@ const Rightbar = ({ user, searchFriends }) => {
     }
   }, [currentUser.token, params.userId]);
 
-  const followHandler = () => {
-    followUser(params.userId);
-    fetchUsers();
-  };
-
-  const unfollowHandler = () => {
-    unfollowUser(params.userId);
-    fetchUsers();
-    history.push("/");
-  };
-
+  // Rightbar on the home/timeline screen
   const HomeRightbar = () => {
     return (
       <>
@@ -106,6 +113,7 @@ const Rightbar = ({ user, searchFriends }) => {
     );
   };
 
+  // profile right bar
   const ProfileRightbar = () => {
     return (
       <>

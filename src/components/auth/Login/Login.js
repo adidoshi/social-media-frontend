@@ -9,11 +9,13 @@ import { useHistory } from "react-router-dom";
 import { CircularProgress } from "@material-ui/core";
 import { Toaster } from "react-hot-toast";
 
+// Formik initial input values
 const initialValues = {
   email: "",
   password: "",
 };
 
+// validate using yup
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email format").required("Required"),
   password: Yup.string().required("Required").min(6),
@@ -23,10 +25,12 @@ const Login = () => {
   const history = useHistory();
   const { user, loading, loginReq } = useAuth();
 
+  // Login submit handler
   const onSubmit = (values) => {
     loginReq(values.email, values.password);
   };
 
+  // if req is successfull, i.e. if user is found in local storage push to timeline screen.
   useEffect(() => {
     if (user) {
       history.push("/");
@@ -78,7 +82,6 @@ const Login = () => {
                     "Log in"
                   )}
                 </button>
-
                 <Link className="loginBtnCenter" to="/register">
                   <button className="loginregistrationButton">
                     Create a new account

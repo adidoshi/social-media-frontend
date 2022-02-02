@@ -15,6 +15,8 @@ export const ProfileProvider = ({ children }) => {
   const [state, dispatch] = useReducer(profileReducer, initialProfileState);
 
   const { user: loggedUser } = useAuth();
+
+  // update user req
   const editUser = async (
     name,
     email,
@@ -54,6 +56,7 @@ export const ProfileProvider = ({ children }) => {
     }
   };
 
+  // follow user req
   const followUser = async (userId) => {
     try {
       const config = {
@@ -69,6 +72,7 @@ export const ProfileProvider = ({ children }) => {
     }
   };
 
+  // unfollow user req
   const unfollowUser = async (userId) => {
     try {
       const config = {

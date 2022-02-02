@@ -21,6 +21,7 @@ const Share = () => {
   const { user } = useAuth();
   const { createPost, getTimelinePosts } = usePost();
 
+  // upload post picture to cloudinary
   const postDetails = (pics) => {
     setPicLoading(true);
     if (pics === undefined) {
@@ -53,6 +54,7 @@ const Share = () => {
     }
   };
 
+  // share a post
   const postSubmitHandler = (e) => {
     e.preventDefault();
     if (url) {
@@ -70,6 +72,7 @@ const Share = () => {
     }
   };
 
+  // get user details
   useEffect(() => {
     const fetchUsers = async () => {
       const config = {

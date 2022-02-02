@@ -3,8 +3,8 @@ import "./SearchUser.css";
 import { Link } from "react-router-dom";
 import noAvatar from "../../../assets/appImages/user.png";
 
-const Online = ({ user }) => {
-  console.log(user);
+const SearchUser = ({ user }) => {
+  //  search users result component
   return (
     <>
       <li className="rightbarFriend">
@@ -23,4 +23,4 @@ const Online = ({ user }) => {
   );
 };
 
-export default Online;
+export default SearchUser;
