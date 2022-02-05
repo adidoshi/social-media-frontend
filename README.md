@@ -36,7 +36,7 @@
 
 - Posts of respective user and their information is visible on profile page. Also profile picture & cover picture is seen.
 
-![image info](./src/assets/readmeImages/3.png)
+![image info](./src/assets/readmeImages/9.png)
 
 ### Edit profile page -
 
