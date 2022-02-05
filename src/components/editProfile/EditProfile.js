@@ -5,7 +5,7 @@ import noCover from "../../assets/appImages/noCover.jpg";
 import sampleProPic from "../../assets/appImages/user.png";
 import Topbar from "../timeline/topbar/Topbar";
 import Sidebar from "../timeline/sidebar/Sidebar";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useAuth from "../../context/auth/AuthContext";
 import { BASE_URL } from "../../context/apiCall";
 import axios from "axios";
@@ -29,11 +29,10 @@ const EditProfile = () => {
   const [user, setUser] = useState({});
 
   const params = useParams();
-  const history = useHistory();
 
   // from context
   const { user: currentUser } = useAuth();
-  const { editUser, loading, success } = useProfile();
+  const { editUser, loading } = useProfile();
   const { theme } = useTheme();
 
   // get user details
@@ -124,11 +123,11 @@ const EditProfile = () => {
   };
 
   // if user profile get's updated, push to home/ timeline screen
-  useEffect(() => {
-    if (success) {
-      history.push("/");
-    }
-  }, [success, history]);
+  // useEffect(() => {
+  //   if (success) {
+  //     history.push("/");
+  //   }
+  // }, [success, history]);
 
   return (
     <>

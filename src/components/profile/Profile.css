@@ -44,7 +44,9 @@
 }
 
 .profileInfoDesc {
-  margin: 5px 0;
+  margin: 5px auto;
+  width: 700px;
+  text-align: center;
 }
 
 .profileInfoName {

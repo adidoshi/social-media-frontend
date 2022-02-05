@@ -79,9 +79,7 @@ const Profile = () => {
               className="profileInfo"
               style={{ color: theme.foreground, background: theme.background }}>
               <h4 className="profileInfoName">{user.name}</h4>
-              <span className="profileInfoDesc">
-                About me: {user.desc || "----"}
-              </span>
+              <p className="profileInfoDesc">About me: {user.desc || "----"}</p>
               <small className="profileInfoDesc">
                 Joined on:{" "}
                 {(

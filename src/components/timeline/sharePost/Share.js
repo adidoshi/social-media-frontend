@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./Share.css";
 import noAvatar from "../../../assets/appImages/user.png";
-import { PermMedia, Label, Room, Cancel } from "@material-ui/icons";
+import { PermMedia, Room, Cancel } from "@material-ui/icons";
 import useAuth from "../../../context/auth/AuthContext";
 import usePost from "../../../context/post/PostContext";
 import { Box, CircularProgress } from "@material-ui/core";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import InputEmoji from "react-input-emoji";
 import { Country } from "country-state-city";
 import axios from "axios";
 import { BASE_URL } from "../../../context/apiCall";
 
-const Share = () => {
+const Share = ({ fetchPosts }) => {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [url, setUrl] = useState("");
@@ -19,7 +19,7 @@ const Share = () => {
   const [liveUser, setLiveUser] = useState({});
 
   const { user } = useAuth();
-  const { createPost, getTimelinePosts, createLoading } = usePost();
+  const { createPost, createLoading } = usePost();
 
   // upload post picture to cloudinary
   const postDetails = (pics) => {
@@ -39,7 +39,6 @@ const Share = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.secure_url);
           setUrl(data.secure_url);
           setPicLoading(false);
         })
@@ -68,7 +67,7 @@ const Share = () => {
       setUrl(null);
       setDescription("");
       setLocation("");
-      getTimelinePosts();
+      fetchPosts();
     }
   };
 
@@ -92,6 +91,7 @@ const Share = () => {
 
   return (
     <>
+      <Toaster />
       <div className="share">
         <form className="shareWrapper" onSubmit={postSubmitHandler}>
           <div className="shareTop">
@@ -133,10 +133,6 @@ const Share = () => {
                   onChange={(e) => postDetails(e.target.files[0])}
                 />
               </label>
-              <div className="shareOption">
-                <Label htmlColor="blue" className="shareIcon" />
-                <span className="shareOptionText">Tag</span>
-              </div>
               <div className="shareOption">
                 <label htmlFor="loc" className="shareOption">
                   <Room htmlColor="green" className="shareIcon" />

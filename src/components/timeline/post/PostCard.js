@@ -122,7 +122,9 @@ const PostCard = ({ post }) => {
               />
             </Link>
             <span className="postUsername">{user.name}</span>
-            <span className="postLocation">• {post.location}</span>
+            <span className="postLocation">
+              • {post.location || "Location"}
+            </span>
             <span className="postDate">
               <Moment fromNow ago>
                 {post.createdAt}
