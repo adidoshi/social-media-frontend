@@ -11,6 +11,7 @@
 ### Light and Dark Theme mode:
 
 User can toggle between light and dark mode (by default light). Achieved by context API.
+![image info](./src/assets/readmeImages/2.png)
 
 ### User Authenication :
 
@@ -21,6 +22,8 @@ User can toggle between light and dark mode (by default light). Achieved by cont
 
 - Home/ timeline screen wherein user followers post and self posts are displayed.
 - When the post was created is available on each post.
+
+![image info](./src/assets/readmeImages/2.png)
 
 ### Share a post :
 

@@ -61,6 +61,7 @@ const Profile = () => {
                 src={user.coverPicture || noCover}
                 alt="..."
               />
+
               <img
                 className="profileUserImg"
                 src={user.profilePicture || sampleProPic}

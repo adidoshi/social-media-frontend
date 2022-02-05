@@ -11,10 +11,14 @@
   position: relative;
 }
 
+.profilePicBox {
+  position: relative;
+}
+
 .profile-edit-icon {
   position: absolute;
-  top: 250px;
-  left: 630px;
+  top: 260px;
+  left: 492px;
 }
 
 .profileCoverImg {

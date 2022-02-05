@@ -30,7 +30,7 @@ const Sidebar = () => {
       style={{ color: theme.foreground, background: theme.background }}>
       <div className="sidebarWrapper">
         <ul className="sidebarList">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <Link to="/" style={{ textDecoration: "none", color: "#1877f2" }}>
             <li className="sidebarListItem">
               <RssFeed className="sidebarIcon" />
               <span className="sidebarListItemText">Feed</span>
