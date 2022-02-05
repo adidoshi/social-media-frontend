@@ -16,9 +16,8 @@
 }
 
 .profile-edit-icon {
-  position: absolute;
-  top: 260px;
-  left: 492px;
+  display: flex;
+  justify-content: center;
 }
 
 .profileCoverImg {
