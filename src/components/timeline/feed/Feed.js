@@ -63,7 +63,9 @@ const Feed = ({ userId }) => {
         {posts.length === 0 ? (
           <h2 style={{ marginTop: "20px" }}>No posts yet!</h2>
         ) : (
-          posts.map((p) => <PostCard post={p} key={p._id} />)
+          posts.map((p) => (
+            <PostCard post={p} key={p._id} fetchPosts={fetchPosts} />
+          ))
         )}
       </div>
     </div>

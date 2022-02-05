@@ -16,7 +16,7 @@ import { errorOptions, successOptions } from "../../utils/toastStyle";
 import usePost from "../../../context/post/PostContext";
 import useAuth from "../../../context/auth/AuthContext";
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, fetchPosts }) => {
   const [like, setLike] = useState(post.likes?.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
@@ -75,7 +75,7 @@ const PostCard = ({ post }) => {
       setCommentLoading(false);
       toast.error(error.response.data.message, errorOptions);
     }
-    getTimelinePosts();
+    fetchPosts();
     setComm("");
   };
 
