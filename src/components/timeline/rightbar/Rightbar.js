@@ -35,11 +35,13 @@ const Rightbar = ({ user, searchFriends }) => {
         Authorization: `Bearer ${currentUser.token}`,
       },
     };
-    const res = await axios.get(
-      `${BASE_URL}/user?userId=${currentUser.id}`,
-      config
-    );
-    setLiveUser(res.data);
+    if (currentUser._id) {
+      const res = await axios.get(
+        `${BASE_URL}/user?userId=${currentUser._id}`,
+        config
+      );
+      setLiveUser(res.data);
+    }
   };
 
   // follow user handler

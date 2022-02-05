@@ -98,3 +98,9 @@
   object-fit: cover;
   cursor: pointer;
 }
+
+@media screen and (max-width: 820px) {
+  .searchbar {
+    display: none;
+  }
+}

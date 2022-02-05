@@ -119,11 +119,13 @@
 }
 
 .postCommentBtn {
-  padding: 5px;
-  cursor: pointer;
   background-color: #5699f0;
   color: white;
-  font-weight: 500;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   border: none;
-  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
 }

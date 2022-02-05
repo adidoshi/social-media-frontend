@@ -59,7 +59,7 @@ const Share = () => {
     e.preventDefault();
     if (url) {
       const newPost = {
-        user: user.id,
+        user: user._id,
         desc: description,
         location: location,
         pic: url,
@@ -80,11 +80,15 @@ const Share = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const res = await axios.get(`${BASE_URL}/user?userId=${user.id}`, config);
+
+      const res = await axios.get(
+        `${BASE_URL}/user?userId=${user._id}`,
+        config
+      );
       setLiveUser(res.data);
     };
     fetchUsers();
-  }, [user.id, user.token]);
+  }, [user._id, user.token]);
 
   return (
     <>

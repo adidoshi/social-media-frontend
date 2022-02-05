@@ -38,7 +38,7 @@ const PostCard = ({ post }) => {
       };
       axios.put(
         `${BASE_URL}/post/${post._id}/like`,
-        { userId: currentUser.id },
+        { userId: currentUser._id },
         config
       );
     } catch (err) {
@@ -98,11 +98,13 @@ const PostCard = ({ post }) => {
           Authorization: `Bearer ${currentUser.token}`,
         },
       };
-      const res = await axios.get(
-        `${BASE_URL}/user?userId=${post.user}`,
-        config
-      );
-      setUser(res.data);
+      if (post.user) {
+        const res = await axios.get(
+          `${BASE_URL}/user?userId=${post.user}`,
+          config
+        );
+        setUser(res.data);
+      }
     };
     fetchUsers();
   }, [post.userId, currentUser.token, post.user]);

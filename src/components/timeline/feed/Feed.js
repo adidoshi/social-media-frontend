@@ -28,7 +28,7 @@ const Feed = ({ userId }) => {
         const res = userId
           ? await axios.get(`${BASE_URL}/post/profile/${params.userId}`, config)
           : await axios.get(
-              `${BASE_URL}/post/timeline/${currentUser.id}`,
+              `${BASE_URL}/post/timeline/${currentUser._id}`,
               config
             );
         setLoading(false);
@@ -42,21 +42,25 @@ const Feed = ({ userId }) => {
       }
     };
     fetchPosts();
-  }, [currentUser.id, params.userId, userId, currentUser.token]);
+  }, [currentUser._id, params.userId, userId, currentUser.token]);
 
   return (
     <div
       className="feed"
       style={{ color: theme.foreground, background: theme.background }}>
       <div className="feedWrapper">
-        {(!userId || userId === currentUser.id) && <Share />}
+        {(!userId || userId === currentUser._id) && <Share />}
         {loading && (
           <Box display="flex" justifyContent="center" sx={{ my: 2 }}>
             <CircularProgress color="secondary" />
           </Box>
         )}
 
-        {posts && posts.map((p) => <PostCard post={p} key={p._id} />)}
+        {posts.length === 0 ? (
+          <h2 style={{ marginTop: "20px" }}>No posts yet!</h2>
+        ) : (
+          posts.map((p) => <PostCard post={p} key={p._id} />)
+        )}
       </div>
     </div>
   );

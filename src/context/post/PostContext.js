@@ -57,7 +57,7 @@ export const PostProvider = ({ children }) => {
           Authorization: `Bearer ${loggedUser.token}`,
         },
       };
-      const url = `${BASE_URL}/post/timeline/${loggedUser.id}`;
+      const url = `${BASE_URL}/post/timeline/${loggedUser._id}`;
       const { data } = await axios.get(url, config);
       dispatch({
         type: "FETCH_POSTS_SUCCESS",

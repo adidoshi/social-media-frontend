@@ -64,8 +64,8 @@ const Profile = () => {
                 src={user.profilePicture || sampleProPic}
                 alt="..."
               />
-              {params.userId === currentUser.id && (
-                <Link to={`/editProfile/${currentUser.id}`}>
+              {params.userId === currentUser._id && (
+                <Link to={`/editProfile/${currentUser._id}`}>
                   <div className="profile-edit-icon">
                     <Avatar
                       style={{ cursor: "pointer", backgroundColor: "blue" }}>

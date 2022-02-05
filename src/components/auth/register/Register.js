@@ -75,7 +75,7 @@ const Register = () => {
                   type="text"
                   name="name"
                   id="name"
-                  placeholder="Your name"
+                  placeholder="Username"
                   className="registerInput"
                 />
                 <ErrorMessage name="name" component={TextError} />

@@ -27,13 +27,13 @@ const Topbar = ({ searchHandler, setSearchKey, searchKey }) => {
         },
       };
       const res = await axios.get(
-        `${BASE_URL}/user?userId=${currentUser.id}`,
+        `${BASE_URL}/user?userId=${currentUser._id}`,
         config
       );
       setUser(res.data);
     };
     fetchUsers();
-  }, [currentUser.id, currentUser.token]);
+  }, [currentUser._id, currentUser.token]);
   return (
     <>
       <div
@@ -76,7 +76,7 @@ const Topbar = ({ searchHandler, setSearchKey, searchKey }) => {
               {theme.background === "#ffffff" ? <WbSunny /> : <NightsStay />}
             </div>
           </div>
-          <Link to={`/profile/${currentUser.id}`}>
+          <Link to={`/profile/${currentUser._id}`}>
             <img
               src={user?.profilePicture ? user?.profilePicture : noAvatar}
               alt="..."
