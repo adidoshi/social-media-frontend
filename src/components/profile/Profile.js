@@ -24,24 +24,22 @@ const Profile = () => {
   const { user: currentUser } = useAuth();
   const { theme } = useTheme();
 
-  const fetchUsers = async () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${currentUser.token}`,
-      },
-    };
-    const res = await axios.get(
-      `${BASE_URL}/user?userId=${params.userId}`,
-      config
-    );
-    setUser(res.data);
-  };
-
   // get user details
   useEffect(() => {
+    const fetchUsers = async () => {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${currentUser.token}`,
+        },
+      };
+      const res = await axios.get(
+        `${BASE_URL}/user?userId=${params.userId}`,
+        config
+      );
+      setUser(res.data);
+    };
     fetchUsers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [params.userId, currentUser.token]);
   return (
     <>
       <Helmet
