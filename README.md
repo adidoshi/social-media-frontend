@@ -10,8 +10,9 @@
 
 ### Light and Dark Theme mode:
 
-User can toggle between light and dark mode (by default light). Achieved by context API.
-![image info](./src/assets/readmeImages/2.png)
+- User can toggle between light and dark mode (by default light). Achieved by context API.
+
+![image info](./src/assets/readmeImages/Hnet-image.gif)
 
 ### User Authenication :
 
@@ -23,24 +24,32 @@ User can toggle between light and dark mode (by default light). Achieved by cont
 - Home/ timeline screen wherein user followers post and self posts are displayed.
 - When the post was created is available on each post.
 
-![image info](./src/assets/readmeImages/2.png)
+![image info](./src/assets/readmeImages/8.png)
 
 ### Share a post :
 
 - User can share a post which get's updated in real time data. User can upload a picture which get's uploaded to cloudinary and that url get's stored in DB. User can add an emoji to its description. Also add a location by selecting from dropdown.
 
+![image info](./src/assets/readmeImages/1.png)
+
 ### User/ friend profile page -
 
 - Posts of respective user and their information is visible on profile page. Also profile picture & cover picture is seen.
+
+![image info](./src/assets/readmeImages/3.png)
 
 ### Edit profile page -
 
 - User can edit profile details like about me, city, username & upload profile picture, cover picture which get's uploaded to cloudinary.
 
+![image info](./src/assets/readmeImages/4.png)
+
 ### Follow/ Unfollow an user -
 
 - When user follows another user, they can view that users posts on timeline & get's added to their following's list & vice versa.
 - When unfollowed that user get's removed from the respctive user's followings's list.
+
+![image info](./src/assets/readmeImages/6.png)
 
 ### Like a post -
 
@@ -51,3 +60,5 @@ User can toggle between light and dark mode (by default light). Achieved by cont
 
 - Logged in user can post on a comment (only once), second time it get's edited.
 - Comments for each post can be viewed at the bottom of the post card.
+
+![image info](./src/assets/readmeImages/5.png)
