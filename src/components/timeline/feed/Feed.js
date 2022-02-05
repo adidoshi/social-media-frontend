@@ -8,7 +8,6 @@ import useAuth from "../../../context/auth/AuthContext";
 import useTheme from "../../../context/ThemeContext";
 import axios from "axios";
 import { BASE_URL } from "../../../context/apiCall";
-import usePost from "../../../context/post/PostContext";
 
 const Feed = ({ userId }) => {
   const params = useParams();
@@ -16,7 +15,6 @@ const Feed = ({ userId }) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const { theme } = useTheme();
-  const { getTimelinePosts } = usePost();
 
   const fetchPosts = async () => {
     try {
