@@ -48,6 +48,7 @@ const Rightbar = ({ user, searchFriends }) => {
   const followHandler = () => {
     followUser(params.userId);
     fetchUsers();
+    history.push("/");
   };
 
   // unfollow a user

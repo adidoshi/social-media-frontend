@@ -26,6 +26,7 @@ const Timeline = () => {
       config
     );
     setSearchFriends(res.data);
+    setSearchKey("");
   };
   return (
     <>
