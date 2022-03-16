@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Topbar.css";
 import axios from "axios";
-import { NightsStay, Notifications, Search, WbSunny } from "@material-ui/icons";
+import { NightsStay, Search, WbSunny } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import useAuth from "../../../context/auth/AuthContext";
 import useTheme, { themes } from "../../../context/ThemeContext";
@@ -16,6 +16,10 @@ const Topbar = ({ searchHandler, setSearchKey, searchKey }) => {
   // Toggle theme switch
   const themeModeHandler = () => {
     setTheme(theme === themes.light ? themes.dark : themes.light);
+    localStorage.setItem(
+      "userTheme",
+      theme === themes.light ? "dark" : "light"
+    );
   };
 
   // get user details
@@ -51,29 +55,25 @@ const Topbar = ({ searchHandler, setSearchKey, searchKey }) => {
           <div className="searchbar">
             <input
               type="text"
-              placeholder="Search for friend"
+              placeholder="Search for friend...example - 'aditya'"
               className="searchInput"
               value={searchKey}
               onChange={(e) => setSearchKey(e.target.value)}
             />
           </div>
         </div>
-        <Search
-          className="searchIcon"
-          style={{ cursor: "pointer" }}
-          onClick={searchHandler}
-        />
+        <span className="searchIcon">
+          <Search style={{ cursor: "pointer" }} onClick={searchHandler} />
+        </span>
         <div className="topbarRight">
           <div className="topbarLinks">
-            <span className="topbarLink">Welcome {user?.name}</span>
+            <Link to="/" className="topbarLink">
+              Welcome {user?.name}
+            </Link>
           </div>
           <div className="topbarIcons">
-            <div className="topbarIconItem">
-              <Notifications />
-              <span className="topbarIconBadge">1</span>
-            </div>
             <div className="topbarIconItem" onClick={themeModeHandler}>
-              {theme.background === "#ffffff" ? <WbSunny /> : <NightsStay />}
+              {theme.background === "#ffffff" ? <NightsStay /> : <WbSunny />}
             </div>
           </div>
           <Link to={`/profile/${currentUser._id}`}>

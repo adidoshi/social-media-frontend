@@ -23,7 +23,9 @@ const initialState = {
 const ThemeContext = createContext(initialState);
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(themes.light);
+  const checkUserPreference =
+    localStorage.getItem("userTheme") === "light" ? themes.light : themes.dark;
+  const [theme, setTheme] = useState(checkUserPreference);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

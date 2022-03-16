@@ -16,12 +16,6 @@
   color: red;
 }
 
-@media screen and (max-width: 820px) {
-  .sidebar {
-    display: none;
-  }
-
-  .rightbar {
-    display: none;
-  }
+a {
+  color: inherit;
 }

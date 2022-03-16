@@ -19,7 +19,7 @@ const Share = ({ fetchPosts }) => {
   const [liveUser, setLiveUser] = useState({});
 
   const { user } = useAuth();
-  const { createPost, createLoading } = usePost();
+  const { createPost, createLoading, post } = usePost();
 
   // upload post picture to cloudinary
   const postDetails = (pics) => {

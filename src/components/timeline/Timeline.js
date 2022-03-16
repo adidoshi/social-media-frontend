@@ -38,9 +38,9 @@ const Timeline = () => {
         searchKey={searchKey}
       />
       <div className="homeContainer">
-        <Sidebar />
+        <Sidebar searchFriends={searchFriends} />
         <Feed />
-        <Rightbar searchFriends={searchFriends} />
+        <Rightbar />
       </div>
     </>
   );

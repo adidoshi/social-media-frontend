@@ -12,9 +12,8 @@ import useAuth from "../../../context/auth/AuthContext";
 import useProfile from "../../../context/profile/ProfileContext";
 import { BASE_URL } from "../../../context/apiCall";
 import useTheme from "../../../context/ThemeContext";
-import SearchUser from "../searchUser/SearchUser";
 
-const Rightbar = ({ user, searchFriends }) => {
+const Rightbar = ({ user }) => {
   const params = useParams();
   const [friends, setFriends] = useState([]);
   const [liveUser, setLiveUser] = useState();
@@ -101,17 +100,12 @@ const Rightbar = ({ user, searchFriends }) => {
             <strong>Ads...</strong>
           </span>
         </div>
-        <a href="https://www.google.com/">
+        <a href="https://splashstore.netlify.app">
           <img className="rightbarAd" src={adImg} alt="..." />
         </a>
-        <a href="https://dev.to/">
+        <a href="https://dev.to/adidoshi">
           <img className="rightbarAd2" src={adImg2} alt="..." />
         </a>
-        <h4 className="rightbarTitle">Search Friends Results</h4>
-        <ul className="rightbarFriendList">
-          {searchFriends &&
-            searchFriends.map((u) => <SearchUser key={u._id} user={u} />)}
-        </ul>
       </>
     );
   };
