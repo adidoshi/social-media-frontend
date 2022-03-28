@@ -6,6 +6,14 @@
 - Context API (passing data throughtout the app) + use Reducer hook for application state management.
 - Styling - Pure Vanilla CSS, MUI Icons
 
+## Backend -
+
+NodeJs + ExpressJs + MongoDB
+
+[Repository](https://github.com/adidoshi/social-media_backend) | [Postman Doc](https://documenter.getpostman.com/view/15329989/UVeDuTTm)
+
+---
+
 ## Core Functionalities -
 
 ### Light and Dark Theme mode:
@@ -62,3 +70,9 @@
 - Comments for each post can be viewed at the bottom of the post card.
 
 ![image info](./src/assets/readmeImages/5.png)
+
+---
+
+## Made with ❤️
+
+by [adidoshi](https://github.com/adidoshi)

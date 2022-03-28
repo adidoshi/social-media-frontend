@@ -4,7 +4,7 @@ import post1 from "../../../assets/appImages/1.jpeg";
 import sampleProPic from "../../../assets/appImages/user.png";
 import likeImg from "../../../assets/appImages/heart.png";
 import heart from "../../../assets/appImages/like.png";
-import { MoreVert, Send } from "@material-ui/icons";
+import { Send } from "@material-ui/icons";
 import { Box, CircularProgress } from "@material-ui/core";
 import axios from "axios";
 import Moment from "react-moment";
@@ -23,9 +23,11 @@ const PostCard = ({ post, fetchPosts }) => {
   const [commentLoading, setCommentLoading] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [comm, setComm] = useState("");
+  console.log(post);
 
   const { user: currentUser } = useAuth();
   const { getTimelinePosts } = usePost();
+  console.log(typeof currentUser._id);
 
   // like a post (1 like per user)
   const likeHandler = () => {
@@ -77,6 +79,28 @@ const PostCard = ({ post, fetchPosts }) => {
     }
     fetchPosts();
     setComm("");
+  };
+
+  // delete post
+  const deleteHandler = async () => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${currentUser.token}`,
+        },
+      };
+      setCommentLoading(true);
+      if (post._id) {
+        await axios.delete(`${BASE_URL}/post/${post._id}`, config);
+      }
+      setCommentLoading(false);
+      toast.success("Comment deleted successfully!", successOptions);
+    } catch (error) {
+      setCommentLoading(false);
+      toast.error(error.response.data.message, errorOptions);
+    }
+    fetchPosts();
   };
 
   // get timeline posts
@@ -133,7 +157,18 @@ const PostCard = ({ post, fetchPosts }) => {
             </span>
           </div>
           <div className="postTopRight">
-            <MoreVert />
+            {currentUser._id === post.user ? (
+              <>
+                <button
+                  style={{ backgroundColor: "#3b82f6" }}
+                  className="shareButton"
+                  onClick={deleteHandler}>
+                  Delete
+                </button>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
         <div className="postCenter">
