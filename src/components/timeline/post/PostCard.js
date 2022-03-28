@@ -23,11 +23,9 @@ const PostCard = ({ post, fetchPosts }) => {
   const [commentLoading, setCommentLoading] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [comm, setComm] = useState("");
-  console.log(post);
 
   const { user: currentUser } = useAuth();
   const { getTimelinePosts } = usePost();
-  console.log(typeof currentUser._id);
 
   // like a post (1 like per user)
   const likeHandler = () => {

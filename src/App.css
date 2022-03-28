@@ -19,3 +19,15 @@
 a {
   color: inherit;
 }
+
+.sidebar-resp {
+  height: max-content;
+  padding-top: 1.2rem;
+  z-index: 99;
+  background-color: rgb(26, 32, 44);
+  color: white;
+}
+
+.sb {
+  padding: 10px 0;
+}

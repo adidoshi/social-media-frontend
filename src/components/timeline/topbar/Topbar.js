@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Topbar.css";
 import axios from "axios";
-import { NightsStay, Search, WbSunny } from "@material-ui/icons";
+import { Menu, NightsStay, Search, WbSunny } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import useAuth from "../../../context/auth/AuthContext";
 import useTheme, { themes } from "../../../context/ThemeContext";
 import noAvatar from "../../../assets/appImages/user.png";
 import { BASE_URL } from "../../../context/apiCall";
 
-const Topbar = ({ searchHandler, setSearchKey, searchKey }) => {
+const Topbar = ({ searchHandler, setSearchKey, searchKey, menuHandler }) => {
   const [user, setUser] = useState();
   const { user: currentUser } = useAuth();
   const { theme, setTheme } = useTheme();
@@ -67,6 +67,9 @@ const Topbar = ({ searchHandler, setSearchKey, searchKey }) => {
         </span>
         <div className="topbarRight">
           <div className="topbarLinks">
+            <span className="menu-icon" onClick={menuHandler}>
+              <Menu />
+            </span>
             <Link to="/" className="topbarLink">
               Welcome {user?.name}
             </Link>
